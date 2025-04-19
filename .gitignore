@@ -14,19 +14,19 @@
 *.stl
 *.gcode
 
-# Specific folders (ignore content but keep folder) #
-#####################################################
+# Specific folders (ignore contents but keep folder README) #
+#############################################################
 input_stl/**
-!input_stl/.gitkeep
+!input_stl/README.md
 
 output_gcode/**
-!output_gcode/.gitkeep
+!output_gcode/README.md
 
 profiles/**
-!profiles/.gitkeep
+!profiles/README.md
 
 logs/**
-!logs/.gitkeep
+!logs/README.md
 
 cura_engine_runtime/**
-!cura_engine_runtime/.gitkeep
+!cura_engine_runtime/README.md
