@@ -98,3 +98,11 @@ Each `.stl` gets its own subfolder, and each profile gets its own `.gcode`.
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+
+### 🙏 Credits
+
+This project uses CuraEngine binaries and definition resources from [Ultimaker Cura](https://github.com/Ultimaker/CuraEngine),
+which are licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+
+See [LICENSE_CURAEGNINE.md](./cura_engine_runtime/LICENSE_CURAEGNINE.md) for more details.
