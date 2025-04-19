@@ -14,10 +14,19 @@
 *.stl
 *.gcode
 
-# Specific folders #
-####################
-input_stl/*
-output_gcode/*
-profiles/*
-logs/*
-cura_engine_runtime/*
+# Specific folders (ignore content but keep folder) #
+#####################################################
+input_stl/**
+!input_stl/.gitkeep
+
+output_gcode/**
+!output_gcode/.gitkeep
+
+profiles/**
+!profiles/.gitkeep
+
+logs/**
+!logs/.gitkeep
+
+cura_engine_runtime/**
+!cura_engine_runtime/.gitkeep
