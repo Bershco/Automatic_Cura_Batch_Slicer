@@ -1,0 +1,23 @@
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Input\Output files #
+######################
+*.stl
+*.gcode
+
+# Specific folders #
+####################
+input_stl/*
+output_gcode/*
+profiles/*
+logs/*
+cura_engine_runtime/*
