@@ -16,17 +16,12 @@
 
 # Specific folders (ignore contents but keep folder README) #
 #############################################################
-input_stl/**
-!input_stl/README.md
-
-output_gcode/**
-!output_gcode/README.md
 
 profiles/**
 !profiles/README.md
 
+orig_profiles/**
+!orig_profiles/README.md
+
 logs/**
 !logs/README.md
-
-cura_engine_runtime/**
-!cura_engine_runtime/README.md
