@@ -9,9 +9,29 @@ def load_cfg_as_s_args(cfg_path):
     with open(cfg_path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
-            if line and "=" in line and not line.startswith(";"):
-                key, val = line.split("=", 1)
-                args += ["-s", f"{key.strip()}={val.strip()}"]
+            if "=" not in line or line.startswith(";"):
+                continue
+            key, val = line.split("=", 1)
+            key = key.strip()
+            val = val.strip()
+            if val == "":
+                continue
+            args += ["-s", f"{key}={val}"]
+
+    # Add safe fallback defaults if missing
+    keys = {arg[3:].split("=")[0] for arg in args if arg.startswith("-s")}
+    fallback_settings = {
+        "mesh_rotation_matrix": "1,0,0,0,1,0,0,0,1",
+        "roofing_layer_count": "1",
+        "roofing_monotonic": "false",
+        "acceleration_enabled": "false",
+        "jerk_enabled": "false",
+        "min_wall_line_width": "0.3",
+    }
+    for key, val in fallback_settings.items():
+        if key not in keys:
+            args += ["-s", f"{key}={val}"]
+
     return args
 
 def find_stl_files(base_path):
@@ -61,9 +81,13 @@ def main():
                 "-l", str(stl)
             ] + settings
 
-        rel_path = stl.relative_to(input_dir).with_suffix("")
-        output_subdir = output_dir / rel_path.parent
-        output_subdir.mkdir(parents=True, exist_ok=True)
+            result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+            if result.returncode != 0 or not output_file.exists() or output_file.stat().st_size == 0:
+                if result.stderr.strip():
+                    with open(log_path, "a", encoding="utf-8") as log:
+                        log.write(f"[ERROR] Failed slicing {stl.name} with profile {profile_name}\n")
+                        log.write(f"Command: {' '.join(cmd)}\n")
+                        log.write(result.stderr + "\n")
 
 if __name__ == "__main__":
     main()
