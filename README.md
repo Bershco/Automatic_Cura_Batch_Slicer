@@ -17,7 +17,7 @@ This tool automates the process of slicing `.stl` files using **CuraEngine** wit
 - `Python 3.11+`
 - A functional CuraEngine setup (DLLs and `.def.json` files included in `cura_engine_runtime`)
 - STL files you wish to slice
-- Cura `.inst.cfg` quality profiles (we'll convert these!)
+- Cura `.inst.cfg` quality profiles (we'll convert these!) (usually found in %appdata%\cura\<version_number>\quality_changes for Windows users)
 
 ---
 
